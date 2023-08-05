@@ -8,19 +8,16 @@ from PIL import Image
 class Tag(models.Model):
     name = models.CharField(max_length=25, null=False, unique=True)
 
+    def __str__(self):
+        return f"{self.name}"
+
 
 class Author(models.Model):
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    bio = models.TextField()
+    fullname = models.CharField(max_length=50, unique=True)
+    description = models.TextField()
     born_date = models.DateField()
     born_location = models.CharField(max_length=250)
     photo = models.ImageField(default='default_image.png', upload_to='profile_images')
-
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=['first_name', 'last_name'], name="author's fullname")
-        ]
 
     # resizing images
     def save(self, *args, **kwargs):
@@ -35,7 +32,7 @@ class Author(models.Model):
 
 
 class Quote(models.Model):
-    quote_text = models.TextField()
+    quote = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField(Tag)
     author = models.ForeignKey(Author, on_delete=models.PROTECT, related_name="quotes")

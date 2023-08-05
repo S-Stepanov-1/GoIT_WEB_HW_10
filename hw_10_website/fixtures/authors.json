@@ -1,0 +1,46 @@
+[
+    {
+        "model": "quotes.Author",
+        "pk": 1,
+        "fields": {
+            "fullname": "John Doe",
+            "description": "A talented writer",
+            "born_date": "1985-07-15",
+            "born_location": "New York, USA",
+            "photo": "profile_images/john_doe.png"
+        }
+    },
+    {
+        "model": "quotes.Author",
+        "pk": 2,
+        "fields": {
+            "fullname": "Jane Smith",
+            "description": "An inspiring poet",
+            "born_date": "1990-03-22",
+            "born_location": "London, UK",
+            "photo": "profile_images/jane_smith.png"
+        }
+    },
+    {
+        "model": "quotes.Author",
+        "pk": 3,
+        "fields": {
+            "fullname": "Alex Johnson",
+            "description": "A philosopher",
+            "born_date": "1978-11-08",
+            "born_location": "Chicago, USA",
+            "photo": "profile_images/alex_johnson.png"
+        }
+    },
+    {
+        "model": "quotes.Author",
+        "pk": 4,
+        "fields": {
+            "fullname": "Emma Lee",
+            "description": "A novelist",
+            "born_date": "1982-09-30",
+            "born_location": "Sydney, Australia",
+            "photo": "profile_images/emma_lee.png"
+        }
+    }
+]

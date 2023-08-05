@@ -10,4 +10,4 @@ class MainPageView(ListView):
     model = Quote
     template_name = "quotes/index.html"
     context_object_name = "quote_list"
-    paginate_by = 10
+    paginate_by = 2

@@ -1,0 +1,60 @@
+[
+    {
+        "model": "quotes.Quote",
+        "pk": 1,
+        "fields": {
+            "quote": "Life is what happens when you're busy making other plans.",
+            "tags": [1, 4],
+            "author": 1,
+            "created": "2023-06-22 12:41:34.165088"
+        }
+    },
+    {
+        "model": "quotes.Quote",
+        "pk": 2,
+        "fields": {
+            "quote": "The future belongs to those who believe in the beauty of their dreams.",
+            "tags": [1, 2],
+            "author": 2,
+            "created": "2023-06-22 12:41:34.165088"
+        }
+    },
+    {
+        "model": "quotes.Quote",
+        "pk": 3,
+        "fields": {
+            "quote": "Love is composed of a single soul inhabiting two bodies.",
+            "tags": [3],
+            "author": 3,
+            "created": "2023-06-22 12:41:34.165088"
+        }
+    },
+    {
+        "model": "quotes.Quote",
+        "pk": 4,
+        "fields": {
+            "quote": "In the end, it's not the years in your life that count. It's the life in your years.",
+            "tags": [1, 4],
+            "author": 1,
+            "created": "2023-06-22 12:41:34.165088"
+        }
+    },
+  {
+        "model": "quotes.Quote",
+        "pk": 6,
+        "fields": {
+            "quote": "In the end, it's not the years in your life that count. It's the life in your years.",
+            "tags": [1, 4],
+            "author": 1,
+            "created": "2023-06-22 12:41:34.165088"
+        }},
+    {
+        "model": "quotes.Quote",
+        "pk": 5,
+        "fields": {
+            "quote": "In  end, it's not the years in your life that count. It's the life in your years.",
+            "tags": [1],
+            "author": 2,
+            "created": "2023-06-22 12:41:34.165088"
+        }}
+]

@@ -1,0 +1,30 @@
+[
+    {
+        "model": "quotes.Tag",
+        "pk": 1,
+        "fields": {
+            "name": "Inspirational"
+        }
+    },
+    {
+        "model": "quotes.Tag",
+        "pk": 2,
+        "fields": {
+            "name": "Motivational"
+        }
+    },
+    {
+        "model": "quotes.Tag",
+        "pk": 3,
+        "fields": {
+            "name": "Love"
+        }
+    },
+    {
+        "model": "quotes.Tag",
+        "pk": 4,
+        "fields": {
+            "name": "Life"
+        }
+    }
+]
