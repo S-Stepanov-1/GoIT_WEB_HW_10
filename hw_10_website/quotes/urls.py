@@ -8,4 +8,5 @@ urlpatterns = [
     path("page/<int:page>", views.MainPageView.as_view(), name="paginator"),
     path("new_author", views.CreateAuthorView.as_view(), name="author"),
     path("new_quote", views.CreateQuoteView.as_view(), name="quote"),
+    path("profile/<int:author_id>", views.ProfileView.as_view(), name="profile"),
 ]

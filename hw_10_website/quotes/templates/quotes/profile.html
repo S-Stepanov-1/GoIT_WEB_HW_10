@@ -1,0 +1,30 @@
+{% extends 'quotes/base.html' %}
+
+{% block content %}
+
+    <div class="author-details">
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{{ author.photo.url }}" class="img-thumbnail mb-3" alt="Image's here">
+            </div>
+            <div class="col-md-8">
+                <div>
+                    <h3 class="author-title"> {{ author.fullname }}</h3>
+                </div>
+                <p>
+                <strong>Born:</strong>
+                <span class="author-born-date">{{ author.born_date }} - </span>
+                <span class="author-born-location">{{ author.born_location }}</span>
+                </p>
+                <p>
+                    <strong>Biography:</strong>
+                    <span>{{ author.description }} </span>
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

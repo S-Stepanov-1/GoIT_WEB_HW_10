@@ -16,7 +16,7 @@
             <div class="card-footer">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items">
-                        <span>Author: {{ quote.author.fullname }}</span>
+                        <span>Author: <a href="{% url 'quotes:profile' quote.author.id %}" class="navbar-brand"> {{ quote.author.fullname }} </a> </span>
                     </div>
                     <div class="d-flex align-items-center">
                         <span>Tags: {{ quote.tags|tags }}</span>
