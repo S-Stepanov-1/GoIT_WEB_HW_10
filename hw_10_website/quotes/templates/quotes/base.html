@@ -28,7 +28,10 @@
 
                 {% if user.is_authenticated %}
                     <li class="nav-item{% if active == 'index' %} active{% endif %}">
-                        <a class="nav-link" href="#">Add quote</a>
+                        <a class="nav-link" href="{% url 'quotes:quote' %}">Add quote</a>
+                    </li>
+                    <li class="nav-item{% if active == 'index' %} active{% endif %}">
+                        <a class="nav-link" href="{% url 'quotes:author' %}">Add new author</a>
                     </li>
                 {% endif %}
 
@@ -37,6 +40,8 @@
                 {% if user.is_authenticated %}
                 <li class="nav-item me-2">
                     <a class="nav-link" href="{% url 'users:logout' %}">Logout</a></li>
+                <li class="nav-item me-2" >
+                    <p class="nav-link"> Welcome, {{ user.username }}! </p></li>
 
                 {% else %}
                 <li class="nav-item me-2">

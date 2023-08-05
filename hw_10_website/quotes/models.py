@@ -14,10 +14,10 @@ class Tag(models.Model):
 
 class Author(models.Model):
     fullname = models.CharField(max_length=50, unique=True)
-    description = models.TextField()
-    born_date = models.DateField()
-    born_location = models.CharField(max_length=250)
-    photo = models.ImageField(default='default_image.png', upload_to='profile_images')
+    description = models.TextField(null=True)
+    born_date = models.DateField(null=True)
+    born_location = models.CharField(max_length=100, null=True)
+    photo = models.ImageField(default='default_image.png', upload_to='profile_images', null=True)
 
     # resizing images
     def save(self, *args, **kwargs):
@@ -29,6 +29,9 @@ class Author(models.Model):
             new_img = (250, 250)
             img.thumbnail(new_img)
             img.save(self.photo.path)
+
+    def __str__(self):
+        return f"{self.fullname}"
 
 
 class Quote(models.Model):

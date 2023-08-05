@@ -1,0 +1,59 @@
+{% extends "quotes/base.html" %}
+
+{% block content %}
+
+<div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-6">
+                {% for error in form.non_field_errors %}
+                    <div class="alert alert-danger">{{ error }}</div>
+                {% endfor %}
+                <div class="card border-0 shadow">
+                    <div class="card-body p-5">
+                        <h2 class="text-center mb-4">New Author</h2>
+                        <form method="post" novalidate enctype="multipart/form-data">
+
+                            {% csrf_token %}
+
+                            <div class="form-group">
+                                <label for="{{ form.author.id_for_label }}" class="form-label">
+                                    {{ form.author.label }}
+                                </label>
+                                {{ form.author }}
+                                {% for error in form.author.errors %}
+                                    <div class="alert alert-danger">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="form-group">
+                                  <label for="{{ form.quote.id_for_label }}" class="form-label">
+                                      Quote
+                                  </label>
+                                  {{ form.quote }}
+                                  {% for error in form.quote.errors %}
+                                      <div class="alert alert-danger">{{ error }}</div>
+                                  {% endfor %}
+                            </div>
+
+                            <div class="form-group">
+                                    <label for="{{ form.tags.id_for_label }}" class="form-label">
+                                        Select tags
+                                    </label>
+                                    {{ form.tags }}
+                                    {% for error in form.tags.errors %}
+                                        <div class="alert alert-danger">{{ error }}</div>
+                                    {% endfor %}
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                                <button type="reset" class="btn btn-warning">Reset</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

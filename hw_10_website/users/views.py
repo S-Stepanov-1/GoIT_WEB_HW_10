@@ -15,7 +15,6 @@ class LoginUserView(LoginView):
 class SignUpUserView(CreateView):
     template_name = "users/signup.html"
     form_class = SignUpForm
-    # next_page = "users/login"
 
     def get_success_url(self):
         return reverse("users:login")
@@ -23,3 +22,6 @@ class SignUpUserView(CreateView):
 
 class LogoutUserView(LogoutView):
     next_page = "/"
+
+
+
