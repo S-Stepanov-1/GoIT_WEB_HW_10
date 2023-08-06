@@ -10,6 +10,7 @@ packages = [{include = "goit_web_hw_10"}]
 python = "^3.11"
 django = "^4.2.4"
 pillow = "^10.0.0"
+pymongo = "^4.4.1"
 
 
 [build-system]
