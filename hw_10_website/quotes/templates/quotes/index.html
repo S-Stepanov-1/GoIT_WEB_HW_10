@@ -1,48 +1,66 @@
 {% extends "quotes/base.html" %}
 {% load extract_tags %}
 
+
 {% block content %}
 
-    {% for quote in quote_list %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                {% for quote in quote_list %}
+                    <div class="card mb-3">
+                        <div class="card-body d-flex align-items-center">
+                            <div>
+                                <div>
+                                    <p class="card-text">{{ quote.quote }}</p>
+                                </div>
+                            </div>
+                        </div>
+                              <div class="card-footer">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items">
+                                        <span>Author: <a href="{% url 'quotes:profile' quote.author.id %}"
+                                                         class="clickable-text"> {{ quote.author.fullname }} </a> </span>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <span>Tags: <a href="#" class="clickable-text">{{ quote.tags|tags }}</a></span>
+                                    </div>
+                            </div>
+</div>
 
-        <div class="card mb-3">
-            <div class="card-body d-flex align-items-center">
-                <div>
-                    <div>
-                        <p class="card-text">{{ quote.quote }}</p>
                     </div>
-                </div>
+                {% endfor %}
             </div>
-            <div class="card-footer">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex align-items">
-                        <span>Author: <a href="{% url 'quotes:profile' quote.author.id %}" class="navbar-brand"> {{ quote.author.fullname }} </a> </span>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <span>Tags: {{ quote.tags|tags }}</span>
-                    </div>
-                </div>
-            </div>
+
+
+        <div class="col-md-4 tags-box">
+
+            {% include "quotes/top_tags.html" with top_tags=top_tags %}
+
         </div>
-    {% endfor %}
 
-    <nav class="sticky-bottom">
-        <ul class="pager">
-            <li class="previous">
-                <a {% if not page_obj.has_previous %} disabled {% endif %}
-                   href="{% if page_obj.has_previous %} {% url 'quotes:paginator' page_obj.previous_page_number %} {% else %} # {% endif %}">
-                    <span aria-hidden="true">←</span> Previous
-                </a>
-            </li>
+        </div>
+    </div>
 
-            <li class="next">
-                <a class="{% if not page_obj.has_next %} disabled {% endif %}"
-                   href="{% if page_obj.has_next %} {% url 'quotes:paginator' page_obj.next_page_number %} {% else %} # {% endif %}">
-                    Next <span aria-hidden="true">→</span>
-                </a>
-            </li>
+<div>
+<nav>
+    <ul class="pager">
 
-        </ul>
-    </nav>
+        <li class="previous">
+            <a {% if not page_obj.has_previous %} disabled {% endif %}
+                    href="{% if page_obj.has_previous %} {% url 'quotes:paginator' page_obj.previous_page_number %} {% else %} # {% endif %}">
+                    Previous <span aria-hidden="true">←</span>
+        </li>
+
+        <li class="next">
+            <a class="{% if not page_obj.has_next %} disabled {% endif %}"
+               href="{% if page_obj.has_next %} {% url 'quotes:paginator' page_obj.next_page_number %} {% else %} # {% endif %}">
+                Next <span aria-hidden="true">→</span>
+            </a>
+        </li>
+
+    </ul>
+</nav>
+    </div>
 
 {% endblock %}

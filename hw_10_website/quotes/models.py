@@ -37,5 +37,10 @@ class Author(models.Model):
 class Quote(models.Model):
     quote = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, through="QuoteTag")
     author = models.ForeignKey(Author, on_delete=models.PROTECT, related_name="quotes")
+
+
+class QuoteTag(models.Model):
+    quote_id = models.ForeignKey(Quote, on_delete=models.CASCADE)
+    tag_id = models.ForeignKey(Tag, on_delete=models.CASCADE)

@@ -1,0 +1,11 @@
+
+<h2>Top Ten tags</h2>
+
+{% for tag in top_tags %}
+
+    <span class="tag-item">
+        • <a class="tag" style="font-size: 20px" href="#"> {{ tag.name }}</a>
+    <br>
+    </span>
+
+{% endfor %}

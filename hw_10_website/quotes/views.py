@@ -2,9 +2,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, DetailView
 from django.urls import reverse
 from django.shortcuts import get_object_or_404
+from django.db.models import Count
 
 
-from .models import Quote, Author
+from .models import Quote, Author, QuoteTag, Tag
 from .forms import AuthorCreateForm, QuoteCreateForm
 
 
@@ -13,8 +14,22 @@ class MainPageView(ListView):
     model = Quote
     template_name = "quotes/index.html"
     context_object_name = "quote_list"
-    paginate_by = 5
     ordering = "-created"
+    paginate_by = 10
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["top_tags"] = self.top_tags()
+        return context
+
+    def top_tags(self):
+        top_tags_id = QuoteTag.objects.values('tag_id').annotate(tag_count=Count('tag_id')).order_by('-tag_count')[:10]
+
+        top_tags_name = []
+        for tag in top_tags_id:
+            top_tags_name.append(Tag.objects.get(id=tag["tag_id"]))
+
+        return top_tags_name
 
 
 class CreateAuthorView(LoginRequiredMixin, CreateView):
