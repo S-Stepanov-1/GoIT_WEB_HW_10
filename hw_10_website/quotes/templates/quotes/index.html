@@ -1,6 +1,4 @@
 {% extends "quotes/base.html" %}
-{% load extract_tags %}
-
 
 {% block content %}
 
@@ -22,11 +20,18 @@
                                         <span>Author: <a href="{% url 'quotes:profile' quote.author.id %}"
                                                          class="clickable-text"> {{ quote.author.fullname }} </a> </span>
                                     </div>
+                                    {% if quote.tags.all %}
                                     <div class="d-flex align-items-center">
-                                        <span>Tags: <a href="#" class="clickable-text">{{ quote.tags|tags }}</a></span>
+                                        <span>Tags:
+                                            {% for tag in quote.tags.all %}
+                                                <a href="{% url 'quotes:tag' tag.name %}" class="clickable-text">{{ tag.name }}</a>
+                                                {% endfor %}
+                                        </span>
                                     </div>
+                                {% endif %}
+
                             </div>
-</div>
+    </div>
 
                     </div>
                 {% endfor %}
@@ -43,24 +48,24 @@
     </div>
 
 <div>
-<nav>
-    <ul class="pager">
+    <nav>
+        <ul class="pager">
 
-        <li class="previous">
-            <a {% if not page_obj.has_previous %} disabled {% endif %}
-                    href="{% if page_obj.has_previous %} {% url 'quotes:paginator' page_obj.previous_page_number %} {% else %} # {% endif %}">
+            <li class="previous">
+                <a {% if not page_obj.has_previous %} disabled {% endif %}
+                href="{% if page_obj.has_previous %} ?page={{ page_obj.previous_page_number }} {% else %} # {% endif %}">
                     Previous <span aria-hidden="true">←</span>
-        </li>
+            </li>
 
-        <li class="next">
-            <a class="{% if not page_obj.has_next %} disabled {% endif %}"
-               href="{% if page_obj.has_next %} {% url 'quotes:paginator' page_obj.next_page_number %} {% else %} # {% endif %}">
-                Next <span aria-hidden="true">→</span>
-            </a>
-        </li>
+            <li class="next">
+                <a class="{% if not page_obj.has_next %} disabled {% endif %}"
+                   href="{% if page_obj.has_next %} ?page={{ page_obj.next_page_number }} {% else %} # {% endif %}">
+                    Next <span aria-hidden="true">→</span>
+                </a>
+            </li>
 
-    </ul>
-</nav>
-    </div>
+        </ul>
+    </nav>
+</div>
 
 {% endblock %}

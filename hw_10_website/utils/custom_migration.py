@@ -12,13 +12,16 @@ from quotes.models import Quote, Tag, Author  # noqa
 
 # ----------- Connection to DB ------------
 current_folder = os.path.dirname(os.path.abspath(__file__))
-init_file = os.path.join(current_folder, 'config.ini')
+parent_folder = os.path.dirname(current_folder)
+
+init_file = os.path.join(parent_folder, "config.ini")
+
 
 config = configparser.ConfigParser()
 config.read(init_file)
 
-mongo_user = config.get('DB', 'user')
-mongodb_pass = config.get('DB', 'pass')
+mongo_user = config.get('DB', 'mongo_user')
+mongodb_pass = config.get('DB', 'mongo_pass')
 
 
 client = MongoClient(f"mongodb+srv://{mongo_user}:{mongodb_pass}@stepanovdb.codnmzv.mongodb.net/")

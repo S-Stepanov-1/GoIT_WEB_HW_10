@@ -9,4 +9,6 @@ urlpatterns = [
     path("new_author", views.CreateAuthorView.as_view(), name="author"),
     path("new_quote", views.CreateQuoteView.as_view(), name="quote"),
     path("profile/<int:author_id>", views.ProfileView.as_view(), name="profile"),
+    path("tag/<str:tag_name>", views.QuotesByTag.as_view(), name="tag"),
+    path("tag/<str:tag_name>/page/<int:page>", views.QuotesByTag.as_view(), name="tag_paginator"),
 ]

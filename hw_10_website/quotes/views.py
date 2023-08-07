@@ -10,17 +10,12 @@ from .forms import AuthorCreateForm, QuoteCreateForm
 
 
 # Create your views here.
-class MainPageView(ListView):
+class CustomMixIn:
     model = Quote
     template_name = "quotes/index.html"
     context_object_name = "quote_list"
     ordering = "-created"
     paginate_by = 10
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["top_tags"] = self.top_tags()
-        return context
 
     def top_tags(self):
         top_tags_id = QuoteTag.objects.values('tag_id').annotate(tag_count=Count('tag_id')).order_by('-tag_count')[:10]
@@ -30,6 +25,13 @@ class MainPageView(ListView):
             top_tags_name.append(Tag.objects.get(id=tag["tag_id"]))
 
         return top_tags_name
+
+
+class MainPageView(CustomMixIn, ListView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["top_tags"] = self.top_tags()
+        return context
 
 
 class CreateAuthorView(LoginRequiredMixin, CreateView):
@@ -58,3 +60,18 @@ class ProfileView(DetailView):
     def get_object(self, queryset=None):
         pk = self.kwargs.get("author_id")
         return get_object_or_404(Author, id=pk)
+
+
+class QuotesByTag(CustomMixIn, ListView):
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["top_tags"] = self.top_tags()
+        return context
+
+    def get_queryset(self):
+        tag_name = self.kwargs["tag_name"]
+        tag_object = Tag.objects.get(name=tag_name)
+
+        quotes = Quote.objects.filter(tags=tag_object)
+        return quotes
