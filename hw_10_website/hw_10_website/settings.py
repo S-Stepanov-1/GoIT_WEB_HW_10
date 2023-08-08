@@ -11,6 +11,22 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import configparser
+import os
+
+
+current_folder = os.path.dirname(os.path.abspath(__file__))
+parent_folder = os.path.dirname(current_folder)
+
+init_file = os.path.join(parent_folder, "config.ini")
+
+
+config = configparser.ConfigParser()
+config.read(init_file)
+
+
+postgres_user = config.get("DB", "postgresql_user")
+postgres_password = config.get("DB", "postgresql_pass")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -85,8 +101,12 @@ WSGI_APPLICATION = 'hw_10_website.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': postgres_user,
+        'PASSWORD': postgres_password,
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
@@ -114,17 +134,6 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
-
-SOCIALACCOUNT_PROVIDERS = {
-    'github': {
-        'APP': {
-            'client_id': 'YOUR_GITHUB_CLIENT_ID',
-            'secret': 'YOUR_GITHUB_SECRET',
-            'key': ''
-        }
-    }
-}
-
 
 
 # Internationalization
