@@ -6,7 +6,11 @@
         <br>
         <div class="row">
             <div class="col-md-4">
-                <img src="{{ author.photo.url }}" class="img-thumbnail mb-3" alt="Image's here">
+                {% if "http" in author.photo.url %}
+                    <img src="{{ author.photo }}" class="img-thumbnail mb-3" alt="{{ author.fullname }}">
+                {% else %}
+                    <img src="{{ author.photo.url }}" class="img-thumbnail mb-3" alt="{{ author.fullname }}">
+                {% endif %}
             </div>
             <div class="col-md-8">
                 <div class="d-flex align-items-center justify-content-between">

@@ -36,7 +36,8 @@ for author in authors:
         fullname=author["fullname"],
         born_date=datetime.strptime(author["born_date"], "%B %d, %Y"),
         born_location=author["born_location"],
-        description=author["description"]
+        description=author["description"],
+        photo=author["photo_url"]
     )
 
 
