@@ -73,3 +73,6 @@ python manage.py runserver
 ![website](Pictures/website.jpg)
 
 
+
+### Author's profile
+![profile](Pictures/profile.jpg)
