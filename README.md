@@ -1,8 +1,34 @@
 # GoIT_WEB_HW_10
-Individual homework №10 at GoIT school - copy of website **`quotes.toscrape.com`**. <br>Tools: **`django`, `PostgreSQL`, `MongoDB`**
+Individual homework №10 at GoIT school - copy of website [**`quotes.toscrape.com`**](http://quotes.toscrape.com/).
+
+<div>
+  <a href="https://www.python.org" target="_blank">
+    <img src="https://www.python.org/static/community_logos/python-logo.png" alt="Python" height="30">
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://www.djangoproject.com" target="_blank">
+    <img src="https://www.djangoproject.com/m/img/logos/django-logo-positive.png" alt="Django" height="30">
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://www.postgresql.org" target="_blank">
+    <img src="https://www.postgresql.org/media/img/about/press/elephant.png" alt="PostgreSQL" height="30">
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://www.mongodb.com" target="_blank">
+    <img src="https://webassets.mongodb.com/_com_assets/cms/mongodb-for-github-9y0b6lr2pu.png" alt="MongoDB" height="30">
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://getbootstrap.com" target="_blank">
+    <img src="https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo.svg" alt="Bootstrap" height="30">
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://www.w3.org/html" target="_blank">
+    <img src="https://www.w3.org/html/logo/downloads/HTML5_Badge_512.png" alt="HTML5" height="30">
+  </a>
+</div>
+
 
 ## Description 
-This work is a copy of website [quotes.toscrape.com](http://quotes.toscrape.com/).
 
 In the course of completing the individual work, tasks such as: 
 
